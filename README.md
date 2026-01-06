@@ -211,3 +211,37 @@ SecAction \
     setvar:tx.enforce_bodyproc_urlencoded=1"
 ````
 
+### ***Anomaly-score***
+
+El anomaly-score permite determinar que requests deben ser bloqueadas. El WAF evalua cada petición con el conjunto de reglas CRS configuradas en la carpeta ``owasp_crs/*.conf`` y el nivel de paranoia establecido. Las reglas pueden tener un diferente nivel de severidad, entre estas se encuentran.
+
+***- Severidad CRÍTICA: Puntuación de anomalía de 5.*** Generado principalmente por las reglas de ataque de la aplicación (archivos 93x y 94x).
+
+***- Severidad de ERROR: Puntuación de anomalía de 4.*** Generado principalmente por las reglas de fuga de salida (archivos 95x).
+
+***- Severidad de ADVERTENCIA: Puntuación de anomalía de 3.*** Generado principalmente por las reglas de cliente malicioso (archivos 91x).
+
+***- Severidad de AVISO: Puntuación de anomalía de 2.*** Generado principalmente por las reglas de protocolo (archivos 92x).
+
+Debido a que una sola petición puede hacer 'match' con más de una regla del CRS, el ``anomaly-score`` total de una petición es la suma del ``anomaly score`` de cada regla 'matcheada'. 
+
+La configuración de coraza recomienda matener un valor bajo en el ``anomaly score`` si lo que se busca es ser más restrictivo. 
+
+<p align="center">
+	<img width="589" height="222" alt="image" src="https://github.com/user-attachments/assets/3b4514d4-3a8c-4e22-b47d-9395d43208a9" />
+</p>
+
+Por tal motivo, se mantendrá un  ``anomaly score = 5`` tanto para las peticiones (inbounds) como respuestas del servidor (outbounds).
+
+````
+SecAction \                                                                                                                                               
+    "id:900110,\                                                                                                                                          
+    phase:1,\                                                                                                                                             
+    pass,\                                                                                                                                                
+    t:none,\                                                                                                                                              
+    nolog,\                                                                                                                                               
+    tag:'OWASP_CRS',\                                                                                                                                     
+    ver:'OWASP_CRS/4.20.0',\                                                                                                                              
+    setvar:tx.inbound_anomaly_score_threshold=5,\                                                                                                         
+    setvar:tx.outbound_anomaly_score_threshold=5" 
+````
