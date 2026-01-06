@@ -233,7 +233,7 @@ La configuración de coraza recomienda matener un valor bajo en el ``anomaly sco
 
 Por tal motivo, se mantendrá un  ``anomaly score = 5`` tanto para las peticiones (inbounds) como respuestas del servidor (outbounds).
 
-````
+````.go
 SecAction \                                                                                                                                               
     "id:900110,\                                                                                                                                          
     phase:1,\                                                                                                                                             
@@ -245,3 +245,37 @@ SecAction \
     setvar:tx.inbound_anomaly_score_threshold=5,\                                                                                                         
     setvar:tx.outbound_anomaly_score_threshold=5" 
 ````
+
+### ***Versionado del setup***
+
+Finalmente, se establece la versión del setup del crs.
+
+````.go
+SecAction \
+    "id:900990,\
+    phase:1,\
+    pass,\
+    t:none,\
+    nolog,\
+    tag:'OWASP_CRS',\
+    ver:'OWASP_CRS/4.20.0',\
+    setvar:tx.crs_setup_version=4200"
+````
+
+### ***Posibles configuraciones adicionales***
+
+Además de las presentes  ``@crs-setup.conf.example`` ofrece variables customizables para el WAF entre las que se encuentran.
+
+- Reporte de anomalias basado en el ``anomaly score``
+
+- Bloqueo temprano de anomalías (Sin necesidad que una petición pase por todas las fases).
+
+- Plugins adicionales.
+
+- Restricción de tamaño de cabeceras.
+
+- Restricción de caracteres.
+
+- Entre otros.
+
+Por ahora, estas configuraciones se mantendrán con sus valores por defecto al no ser tan relevantes.
