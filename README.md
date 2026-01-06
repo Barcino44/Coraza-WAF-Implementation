@@ -120,7 +120,7 @@ go mod tidy
 
 La instalación de los módulos del paso anterior trae consigo la creación de la carpeta ``/go/pkg/mod/github.com/corazawaf/coraza-coreruleset/v4@v4.20.0/rules``.
 
-Dicha carpeta contiene los archivos ``@..`` mecionados en ``main.go``. Estos archivos pueden ser modificados a conveniencia para conseguir que el WAF sea más o menos restrictivo.
+Dicha carpeta contiene los archivos ``@..`` mencionados en ``main.go``. Estos archivos pueden ser modificados a conveniencia para conseguir que el WAF sea más o menos restrictivo.
 
 <p align="center">
     <img width="973" height="66" alt="image" src="https://github.com/user-attachments/assets/1db2f122-1b66-4f44-a42e-3d9333d88798" />
