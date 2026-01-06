@@ -146,16 +146,16 @@ El archivo ``@crs-setup.conf.example`` cuenta con reglas customizables para cons
 
 Entre las configuraciones realizadas se encuentran.
 
-### Configuraciones para el registro de eventos
+### ***Registro de eventos***
 
 En este caso se habilitan los logs en tiempo real en fase 1 y fase 2)
 
-````
+````.go
 SecDefaultAction "phase:1,log,auditlog,pass"  
 SecDefaultAction "phase:2,log,auditlog,pass" 
 ````
 
-### Nivel de paranoia
+### ***Nivel de paranoia***
 
 El nivel de paranoia, es un parámetro que permite configurar la rigurosidad del WAF. Un mayor nivel de paranoia puede resultar en una mayor identificación de amenazas. Sin embargo también puede acarrear una mayor cantidad de FP clasificando como amenazas a peticiones que pueden no ser dañinas. De acuerdo con la documentación de Coraza.
 
@@ -169,14 +169,45 @@ El nivel de paranoia, es un parámetro que permite configurar la rigurosidad del
 
 Para nuestro caso, se modificará el nivel de paranoia a nivel 2 con el fin de aumentar un poco más la rigidez por defecto y evitar una gran cantidad de bypasses. 
 
+````.go
+SecAction \
+    "id:900001,\
+    phase:1,\
+    pass,\
+    t:none,\
+    nolog,\
+    tag:'OWASP_CRS',\
+    ver:'OWASP_CRS/4.20.0',\
+    setvar:tx.detection_paranoia_level=2"
 ````
-SecAction \                                                                                                                                               
-    "id:900000,\                                                                                                                                          
-    phase:1,\                                                                                                                                             
-    pass,\                                                                                                                                                
-    t:none,\                                                                                                                                              
-    nolog,\                                                                                                                                               
-    tag:'OWASP_CRS',\                                                                                                                                     
-    ver:'OWASP_CRS/4.20.0',\                                                                                                                              
-    setvar:tx.blocking_paranoia_level=2" 
+
+Además, se pueden establecer un nivel de paranoia para la identificación de amenazas ``setvar:tx.detection_paranoia_level=2`` y otro para el bloqueo de las mismas ``setvar:tx.blocking_paranoia_level=2``. No obstante, unicamente el nivel establecido en la variable ``setvar:tx.blocking_paranoia_level=2`` tendrá incidencia en el ``anomaly-score`` que será usado para determinar si una petición es bloqueada o no. El nivel de detection debe ser mayor o igual al nivel de bloqueo.
+
+````.go
+SecAction \
+    "id:900001,\
+    phase:1,\
+    pass,\
+    t:none,\
+    nolog,\
+    tag:'OWASP_CRS',\
+    ver:'OWASP_CRS/4.20.0',\
+    setvar:tx.detection_paranoia_level=2"
 ````
+
+### ***Procesador de cuerpo***
+
+El WAF por defecto confia en el parametro de la cabecera ``Content-Type`` para realizar el procesamiento de la petición. Sin embargo, algunas veces este parámetro no es establecido o trae información incorrecorrecta lo que afecta el procesamiento del WAF. Por tal motivo, se habilita el procesador de cuerpo con el fin de que el WAF realice su procesamiento basado también en el contenido del cuerpo.
+
+````
+SecAction \
+    "id:900010,\
+    phase:1,\
+    pass,\
+    t:none,\
+    nolog,\
+    tag:'OWASP_CRS',\
+    ver:'OWASP_CRS/4.20.0',\
+    setvar:tx.enforce_bodyproc_urlencoded=1"
+````
+
