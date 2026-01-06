@@ -108,7 +108,7 @@ Para el control criptográfico y de versiones de los módulos instalados.
 
 ## Implementación
 
-### Paso #1: Instalación de módulos.
+## Paso #1: Instalación de módulos.
 
 Los módulos presentes en el archivo ``go.mod`` deben ser instalados con ayuda de
 
@@ -116,7 +116,7 @@ Los módulos presentes en el archivo ``go.mod`` deben ser instalados con ayuda d
 go mod tidy
 ````
 
-### Paso #2: Configuración adicional de archivos.
+## Paso #2: Configuración adicional de archivos.
 
 La instalación de los módulos del paso anterior trae consigo la creación de la carpeta ``/go/pkg/mod/github.com/corazawaf/coraza-coreruleset/v4@v4.20.0/rules``.
 
@@ -146,7 +146,7 @@ El archivo ``@crs-setup.conf.example`` cuenta con reglas customizables para cons
 
 Entre las configuraciones realizadas se encuentran.
 
-**Configuraciones para el registro de eventos**
+### Configuraciones para el registro de eventos
 
 En este caso se habilitan los logs en tiempo real en fase 1 y fase 2)
 
@@ -155,17 +155,17 @@ SecDefaultAction "phase:1,log,auditlog,pass"
 SecDefaultAction "phase:2,log,auditlog,pass" 
 ````
 
-**Nivel de paranoia**
+### Nivel de paranoia
 
 El nivel de paranoia, es un parámetro que permite configurar la rigurosidad del WAF. Un mayor nivel de paranoia puede resultar en una mayor identificación de amenazas. Sin embargo también puede acarrear una mayor cantidad de FP clasificando como amenazas a peticiones que pueden no ser dañinas. De acuerdo con la documentación de Coraza.
 
-***Nivel 1: El nivel de paranoia 1 es el predeterminado. En este nivel, la mayoría de las reglas básicas están habilitadas. PL1 se recomienda para principiantes e instalaciones con requerimientos de seguridad básicos. La cantidad de FP en este nivel son muy bajas.***
+***- Nivel 1:*** El nivel de paranoia 1 es el predeterminado. En este nivel, la mayoría de las reglas básicas están habilitadas. PL1 se recomienda para principiantes e instalaciones con requerimientos de seguridad básicos. La cantidad de FP en este nivel son muy bajas.
 
-***Nivel 2: El nivel de paranoia 2 incluye muchas reglas adicionales, por ejemplo, la habilitación de muchas protecciones contra inyecciones de SQL y XSS basadas en expresiones regulares, y la adición de palabras clave adicionales para la verificación de inyecciones de código.***
+***- Nivel 2:*** El nivel de paranoia 2 incluye muchas reglas adicionales, por ejemplo, la habilitación de muchas protecciones contra inyecciones de SQL y XSS basadas en expresiones regulares, y la adición de palabras clave adicionales para la verificación de inyecciones de código.
 
-***Nivel 3: El nivel de paranoia 3 habilita más reglas y listas de palabras clave, y límites en el uso de caracteres especiales. PL3 está dirigido a usuarios con experiencia en el manejo de FP y sitios con requerimientos de alta seguridad***
+***- Nivel 3:*** El nivel de paranoia 3 habilita más reglas y listas de palabras clave, y límites en el uso de caracteres especiales. PL3 está dirigido a usuarios con experiencia en el manejo de FP y sitios con requerimientos de alta seguridad.
 
-***Nivel 4: El nivel de paranoia 4 restringe aún más los caracteres especiales. Se recomienda el nivel más alto para usuarios con experiencia que protegen instalaciones con requisitos de seguridad muy altos. PL4 probablemente generará una gran cantidad de FP que deberán ser tratados.***
+***- Nivel 4:*** El nivel de paranoia 4 restringe aún más los caracteres especiales. Se recomienda el nivel más alto para usuarios con experiencia que protegen instalaciones con requisitos de seguridad muy altos. PL4 probablemente generará una gran cantidad de FP que deberán ser tratados.
 
 Para nuestro caso, se modificará el nivel de paranoia a nivel 2 con el fin de aumentar un poco más la rigidez por defecto y evitar una gran cantidad de bypasses. 
 
