@@ -142,3 +142,41 @@ Mantendremos la configuración por defecto. Unicamente se cambiará la variable 
 
 ### Paso #2.2: Configuración de ``@crs-setup.conf.example``
 
+El archivo ``@crs-setup.conf.example`` cuenta con reglas customizables para conseguir aumentar o disminuir la estrictez del WAF. 
+
+Entre las configuraciones realizadas se encuentran.
+
+**Configuraciones para el registro de eventos**
+
+En este caso se habilitan los logs en tiempo real en fase 1 y fase 2)
+
+````
+SecDefaultAction "phase:1,log,auditlog,pass"  
+SecDefaultAction "phase:2,log,auditlog,pass" 
+````
+
+**Nivel de paranoia**
+
+El nivel de paranoia, es un parámetro que permite configurar la rigurosidad del WAF. Un mayor nivel de paranoia puede resultar en una mayor identificación de amenazas. Sin embargo también puede acarrear una mayor cantidad de FP clasificando como amenazas a peticiones que pueden no ser dañinas. De acuerdo con la documentación de Coraza.
+
+***Nivel 1: El nivel de paranoia 1 es el predeterminado. En este nivel, la mayoría de las reglas básicas están habilitadas. PL1 se recomienda para principiantes e instalaciones con requerimientos de seguridad básicos. La cantidad de FP en este nivel son muy bajas.***
+
+***Nivel 2: El nivel de paranoia 2 incluye muchas reglas adicionales, por ejemplo, la habilitación de muchas protecciones contra inyecciones de SQL y XSS basadas en expresiones regulares, y la adición de palabras clave adicionales para la verificación de inyecciones de código.***
+
+***Nivel 3: El nivel de paranoia 3 habilita más reglas y listas de palabras clave, y límites en el uso de caracteres especiales. PL3 está dirigido a usuarios con experiencia en el manejo de FP y sitios con requerimientos de alta seguridad***
+
+***Nivel 4: El nivel de paranoia 4 restringe aún más los caracteres especiales. Se recomienda el nivel más alto para usuarios con experiencia que protegen instalaciones con requisitos de seguridad muy altos. PL4 probablemente generará una gran cantidad de FP que deberán ser tratados.***
+
+Para nuestro caso, se modificará el nivel de paranoia a nivel 2 con el fin de aumentar un poco más la rigidez por defecto y evitar una gran cantidad de bypasses. 
+
+````
+SecAction \                                                                                                                                               
+    "id:900000,\                                                                                                                                          
+    phase:1,\                                                                                                                                             
+    pass,\                                                                                                                                                
+    t:none,\                                                                                                                                              
+    nolog,\                                                                                                                                               
+    tag:'OWASP_CRS',\                                                                                                                                     
+    ver:'OWASP_CRS/4.20.0',\                                                                                                                              
+    setvar:tx.blocking_paranoia_level=2" 
+````
