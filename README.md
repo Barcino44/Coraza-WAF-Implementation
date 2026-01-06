@@ -197,13 +197,22 @@ SecAction \
 
 ### ***Procesador de cuerpo***
 
-El WAF por defecto confia en el parametro de la cabecera ``Content-Type`` para realizar el procesamiento de la petición. Sin embargo, algunas veces este parámetro no es establecido o trae información incorrecorrecta lo que afecta el procesamiento del WAF. Por tal motivo, se habilita el procesador de cuerpo con el fin de que el WAF realice su procesamiento basado también en el contenido del cuerpo.
+El WAF por defecto confia en el parametro de la cabecera ``Content-Type`` para realizar el procesamiento de la petición. Sin embargo, algunas veces este parámetro no es establecido o trae información incorrecta lo que afecta el procesamiento del WAF. Por tal motivo, se habilita el procesador de cuerpo con el fin de que el WAF realice su procesamiento basado también en el contenido del cuerpo.
 
 ````.go
 SecAction \
     "id:900010,\
     phase:1,\
+    pass,\SecAction \
+    "id:900110,\
+    phase:1,\
     pass,\
+    t:none,\
+    nolog,\
+    tag:'OWASP_CRS',\
+    ver:'OWASP_CRS/4.20.0',\
+    setvar:tx.inbound_anomaly_score_threshold=5,\
+    setvar:tx.outbound_anomaly_score_threshold=5"
     t:none,\
     nolog,\
     tag:'OWASP_CRS',\
