@@ -288,3 +288,18 @@ Además de las presentes  ``@crs-setup.conf.example`` ofrece variables customiza
 - Entre otros.
 
 Por ahora, estas configuraciones se mantendrán con sus valores por defecto al no ser tan relevantes.
+
+## Pruebas
+
+***Nivel de paranoia 1.***
+
+**SQLi: (942)**
+<p align="center">
+	<img width="670" height="395" alt="image" src="https://github.com/user-attachments/assets/ac30c549-7b7b-4e90-8a71-cc3ea8c9f6d2" />
+</p>
+
+**XSS: (941)**
+<p align="center">
+	<img width="667" height="371" alt="image" src="https://github.com/user-attachments/assets/29cba0bc-39b6-42ef-8191-bf2158d98d09" />
+</p>
+
