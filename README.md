@@ -293,12 +293,15 @@ Por ahora, estas configuraciones se mantendrán con sus valores por defecto al n
 
 ***Nivel de paranoia 1.***
 
-***SQLi: (942)***
+***SQLi: (942) -> 44% de efectividad***
+
 <p align="center">
 	<img width="670" height="395" alt="image" src="https://github.com/user-attachments/assets/ac30c549-7b7b-4e90-8a71-cc3ea8c9f6d2" />
 </p>
 
-***XSS: (941)***
+
+
+***XSS: (941) -> 40% de efectividad***
 
 <p align="center">
 	<img width="667" height="371" alt="image" src="https://github.com/user-attachments/assets/29cba0bc-39b6-42ef-8191-bf2158d98d09" />
@@ -306,13 +309,13 @@ Por ahora, estas configuraciones se mantendrán con sus valores por defecto al n
 
 ***Nivel de paranoia 2.***
 
-***SQLi: (942)***
+***SQLi: (942) -> 88% de efectividad***
 
 <p align="center">
 	<img width="737" height="370" alt="image" src="https://github.com/user-attachments/assets/a22b41d2-1fa6-4d5e-b7f3-63ece40cbf82" />
 </p>
 
-***XSS: (941)***
+***XSS: (941) -> 67% de efectividad***
 
 <p align="center">
 	<img width="678" height="372" alt="image" src="https://github.com/user-attachments/assets/af382e80-4160-4309-bf4e-69de83af4ff0" />
@@ -320,15 +323,29 @@ Por ahora, estas configuraciones se mantendrán con sus valores por defecto al n
 
 ***Nivel de paranoia 3.***
 
-***SQLi: (942)***
+***SQLi: (942) -> 97% de efectividad***
 
 <p align="center">
 	<img width="669" height="376" alt="image" src="https://github.com/user-attachments/assets/45a833fd-e66a-4113-966f-3e45be46cad1" />
 </p>
 
-***XSS: (941)***
+***XSS: (941) -> 82% de efectividad***
 
 <p align="center">
 	<img width="669" height="378" alt="image" src="https://github.com/user-attachments/assets/d4f5d8d9-a903-4844-ac55-903122b14032" />
+</p>
+
+***Nivel de paranoia 4.***
+
+***SQLi: (942) -> 97% de efectividad***
+
+<p align="center">
+	<img width="681" height="372" alt="image" src="https://github.com/user-attachments/assets/510e2422-d51b-4487-bcc4-cd1e0ef6f8ec" />
+</p>
+
+***XSS: (941) -> 94% de efectividad***
+
+<p align="center">
+	<img width="655" height="372" alt="image" src="https://github.com/user-attachments/assets/bbc852ba-b348-49e2-a431-daff1cd21d5f" />
 </p>
 
