@@ -232,9 +232,9 @@ El anomaly-score permite determinar que requests deben ser bloqueadas. El WAF ev
 
 ***- Severidad de AVISO: Puntuación de anomalía de 2.*** Generado principalmente por las reglas de protocolo (archivos 92x).
 
-Debido a que una sola petición puede hacer 'match' con más de una regla del CRS, el ``anomaly-score`` total de una petición es la suma del ``anomaly score`` de cada regla 'matcheada'. 
+Debido a que una sola petición puede hacer 'match' con más de una regla del CRS, el ``anomaly-score`` total de una petición es la suma del ``anomaly-score`` de cada regla 'matcheada'. 
 
-La configuración de coraza recomienda matener un valor bajo en el ``anomaly score`` si lo que se busca es ser más restrictivo. 
+La configuración de coraza recomienda matener un valor bajo en el ``anomaly-score`` si lo que se busca es ser más restrictivo. 
 
 <p align="center">
 	<img width="589" height="222" alt="image" src="https://github.com/user-attachments/assets/3b4514d4-3a8c-4e22-b47d-9395d43208a9" />
@@ -275,7 +275,7 @@ SecAction \
 
 Además de las presentes  ``@crs-setup.conf.example`` ofrece variables customizables para el WAF entre las que se encuentran.
 
-- Reporte de anomalias basado en el ``anomaly score``
+- Reporte de anomalias basado en el ``anomaly-score``
 
 - Bloqueo temprano de anomalías (Sin necesidad que una petición pase por todas las fases).
 
@@ -293,12 +293,12 @@ Por ahora, estas configuraciones se mantendrán con sus valores por defecto al n
 
 ***Nivel de paranoia 1.***
 
-**SQLi: (942)**
+***SQLi: (942)***
 <p align="center">
 	<img width="670" height="395" alt="image" src="https://github.com/user-attachments/assets/ac30c549-7b7b-4e90-8a71-cc3ea8c9f6d2" />
 </p>
 
-**XSS: (941)**
+***XSS: (941)***
 
 <p align="center">
 	<img width="667" height="371" alt="image" src="https://github.com/user-attachments/assets/29cba0bc-39b6-42ef-8191-bf2158d98d09" />
@@ -306,14 +306,29 @@ Por ahora, estas configuraciones se mantendrán con sus valores por defecto al n
 
 ***Nivel de paranoia 2.***
 
-**SQLi: (942)**
+***SQLi: (942)***
 
 <p align="center">
 	<img width="737" height="370" alt="image" src="https://github.com/user-attachments/assets/a22b41d2-1fa6-4d5e-b7f3-63ece40cbf82" />
 </p>
 
-**XSS: (941)**
+***XSS: (941)***
 
 <p align="center">
 	<img width="678" height="372" alt="image" src="https://github.com/user-attachments/assets/af382e80-4160-4309-bf4e-69de83af4ff0" />
+<p align="center">
+
+***Nivel de paranoia 3.***
+
+***SQLi: (942)***
+
+<p align="center">
+	<img width="669" height="376" alt="image" src="https://github.com/user-attachments/assets/45a833fd-e66a-4113-966f-3e45be46cad1" />
 </p>
+
+***XSS: (941)***
+
+<p align="center">
+	<img width="669" height="378" alt="image" src="https://github.com/user-attachments/assets/d4f5d8d9-a903-4844-ac55-903122b14032" />
+</p>
+
