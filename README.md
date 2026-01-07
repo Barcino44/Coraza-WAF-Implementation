@@ -299,7 +299,21 @@ Por ahora, estas configuraciones se mantendrán con sus valores por defecto al n
 </p>
 
 **XSS: (941)**
+
 <p align="center">
 	<img width="667" height="371" alt="image" src="https://github.com/user-attachments/assets/29cba0bc-39b6-42ef-8191-bf2158d98d09" />
 </p>
 
+***Nivel de paranoia 2.***
+
+**SQLi: (942)**
+
+<p align="center">
+	<img width="737" height="370" alt="image" src="https://github.com/user-attachments/assets/a22b41d2-1fa6-4d5e-b7f3-63ece40cbf82" />
+</p>
+
+**XSS: (941)**
+
+<p align="center">
+	<img width="678" height="372" alt="image" src="https://github.com/user-attachments/assets/af382e80-4160-4309-bf4e-69de83af4ff0" />
+</p>
