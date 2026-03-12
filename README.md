@@ -178,7 +178,7 @@ SecAction \
     nolog,\
     tag:'OWASP_CRS',\
     ver:'OWASP_CRS/4.20.0',\
-    setvar:tx.detection_paranoia_level=2"
+    setvar:tx.blocking_paranoia_level=2"
 ````
 
 Además, se pueden establecer un nivel de paranoia para la identificación de amenazas ``setvar:tx.detection_paranoia_level=2`` y otro para el bloqueo de las mismas ``setvar:tx.blocking_paranoia_level=2``. No obstante, unicamente el nivel establecido en la variable ``setvar:tx.blocking_paranoia_level=2`` tendrá incidencia en el ``anomaly-score`` que será usado para determinar si una petición es bloqueada o no. El nivel de detection debe ser mayor o igual al nivel de bloqueo.
