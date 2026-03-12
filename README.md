@@ -185,7 +185,7 @@ Además, se pueden establecer un nivel de paranoia para la identificación de am
 
 ````.go
 SecAction \
-    "id:900001,\
+    "id:900002,\
     phase:1,\
     pass,\
     t:none,\
