@@ -6,7 +6,6 @@ import (
     "net/http"
     "net/http/httputil"
     "net/url" 
-    coreruleset "github.com/corazawaf/coraza-coreruleset/v4"
     "github.com/corazawaf/coraza/v3"
     txhttp "github.com/corazawaf/coraza/v3/http"
     "github.com/corazawaf/coraza/v3/types"
@@ -15,7 +14,7 @@ import (
 func main() {
     waf := createWAF()
     
-    targetURL, err := url.Parse("http://192.168.1.11:80")
+    targetURL, err := url.Parse("http://192.168.1.92:42001")
     if err != nil {
         log.Fatal(err)
     }
@@ -34,21 +33,21 @@ func main() {
     log.Fatal(http.ListenAndServe(":8090", nil))
 }
 
-func createWAF() coraza.WAF { 
+func createWAF() coraza.WAF {
     waf, err := coraza.NewWAF(
         coraza.NewWAFConfig().
-            WithRootFS(coreruleset.FS).
             WithErrorCallback(logError).
-            WithDirectives("Include @coraza.conf-recommended").
-            WithDirectives("Include @crs-setup.conf.example").
-            WithDirectives("Include @owasp_crs/*.conf"),
+            WithDirectives(`
+                Include /home/vagrant/coraza/ml-rules.conf
+            `),
     )
+
     if err != nil {
         log.Fatal(err)
     }
+
     return waf
 }
-
 func logError(mr types.MatchedRule) {
     fmt.Printf(
         "[WAF][%s] RuleID=%d Msg=%s\n",
